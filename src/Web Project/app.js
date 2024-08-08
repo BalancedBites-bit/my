@@ -85,7 +85,7 @@ app.use(
       r();
   }),
   mongoose
-    .connect("mongodb://localhost:27017/NeTRITIN")
+    .connect(process.env.dbUrl)
     .then(() => console.log("Database connection successful"))
     .catch((e) => console.error("Connection interrupted!", e)),
   cron.schedule("0 0 * * *", async (e) => {
@@ -161,7 +161,6 @@ app.use("/main", adminRouter),
         (s.session.otp = l),
           (s.session.userData = { Email: t, Username: a, Password: n }),
           (s.session.otpContext = "userRegister"),
-          console.log(l)
           await e(t.toLowerCase(), l),
           s.flash(
             "success",
