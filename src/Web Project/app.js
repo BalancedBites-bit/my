@@ -42,10 +42,14 @@ const store = MongoStore.create({
 app.use(
   session({
     secret: process.env.sessionSecret,
-    resave: !1,
-    saveUninitialized: !0,
+    resave: false,  // Do not resave session if not modified
+    saveUninitialized: false,  // Do not save uninitialized sessions
     store: store,
-    cookie: { httpOnly: !0, maxAge: 12096e5, secure: false},
+    cookie: {
+      httpOnly: true,  // Prevent client-side JavaScript from accessing cookies
+      maxAge: 12096e5,  // Cookie expiration time
+      secure: true,  // Only set to true in production
+    }
   })
 ),
   app.use(flash()),
