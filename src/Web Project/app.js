@@ -48,7 +48,7 @@ app.use(
     cookie: {
       httpOnly: true, 
       secure: false,
-      sameSite: true, // Prevent client-side JavaScript from accessing cookies
+      sameSite: 'lax', // Prevent client-side JavaScript from accessing cookies
       maxAge: 12096e5,  // Cookie expiration time  // Only set to true in production
     }
   })
