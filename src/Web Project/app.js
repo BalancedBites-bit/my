@@ -46,9 +46,10 @@ app.use(
     saveUninitialized: false,  // Do not save uninitialized sessions
     store: store,
     cookie: {
-      httpOnly: true,  // Prevent client-side JavaScript from accessing cookies
-      maxAge: 12096e5,  // Cookie expiration time
-      secure: false,  // Only set to true in production
+      httpOnly: true, 
+      secure: true,
+      sameSite: 'lax', // Prevent client-side JavaScript from accessing cookies
+      maxAge: 12096e5,  // Cookie expiration time  // Only set to true in production
     }
   })
 ),
